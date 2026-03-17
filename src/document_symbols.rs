@@ -105,7 +105,7 @@ pub struct DocumentSymbol {
 
 /// Represents information about programming constructs like variables, classes,
 /// interfaces etc.
-#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize, Hash)]
 #[serde(rename_all = "camelCase")]
 pub struct SymbolInformation {
     /// The name of this symbol.

@@ -12,7 +12,7 @@ extern crate bitflags;
 
 use std::{collections::HashMap, fmt::Debug};
 
-use serde::{de, de::Error, Deserialize, Serialize};
+use serde::{Deserialize, Serialize, de, de::Error};
 use serde_json::Value;
 
 pub use uri::Uri;
@@ -1117,7 +1117,7 @@ pub enum FailureHandlingKind {
 }
 
 /// A symbol kind.
-#[derive(Eq, PartialEq, Copy, Clone, Serialize, Deserialize)]
+#[derive(Eq, PartialEq, Copy, Clone, Serialize, Deserialize, Hash)]
 #[serde(transparent)]
 pub struct SymbolKind(i32);
 lsp_enum! {
@@ -2636,7 +2636,7 @@ pub struct PartialResultParams {
 /// Symbol tags are extra annotations that tweak the rendering of a symbol.
 ///
 /// @since 3.16.0
-#[derive(Eq, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Eq, PartialEq, Clone, Deserialize, Serialize, Hash)]
 #[serde(transparent)]
 pub struct SymbolTag(i32);
 lsp_enum! {
