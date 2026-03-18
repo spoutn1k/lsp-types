@@ -2648,9 +2648,9 @@ impl SymbolTag {
 
 #[cfg(test)]
 mod tests {
-    use serde::{Deserialize, Serialize};
-
     use super::*;
+    use serde::{Deserialize, Serialize};
+    use std::str::FromStr;
 
     pub(crate) fn test_serialization<SER>(ms: &SER, expected: &str)
     where
@@ -2733,7 +2733,7 @@ mod tests {
         test_serialization(
             &WorkspaceEdit {
                 changes: Some(
-                    vec![("file://test".parse().unwrap(), vec![])]
+                    vec![(Uri::from_str("file://test").unwrap(), vec![])]
                         .into_iter()
                         .collect(),
                 ),
